@@ -1,8 +1,9 @@
 const path = require(`path`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
 const fetch = require('node-fetch')
 
 const skillFieldsList = []
+
+const isClosed = process.env.MODE === 'CLOSED'
 
 exports.sourceNodes = async ({ actions: { createNode }, createContentDigest }) => {
   const users = await fetch('https://script.googleusercontent.com/macros/echo?user_content_key=F1MhFG5IsgafF8xBLn9XRGUwk38LJzP1K5UN6Edww2ZehRt8nrKMBEteqVy_7NOwGepzNkzqbWQyVDI3PaA1S24HZ24Z954em5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnLtcJ4QdtAa6VYv3USKD50W-6NaEmuPWlfrqgRDH9PZAo_cLNbdZm3jT3WsH8MCUfizStk4eEt_hGGaU2pP6Ntk&lib=MG_iUP8jn_e2IqEcosB-IYhxzlo5DDtxR')
@@ -21,7 +22,11 @@ exports.sourceNodes = async ({ actions: { createNode }, createContentDigest }) =
         skillFieldsList.push(field)
       }
     })
+
     const isPrivate = user['is_private'] !== ''
+
+    if (!isClosed && isPrivate) return
+
     createNode({
       id: user['Twitter ID'] || user['名前'],
       name: user['名前'],

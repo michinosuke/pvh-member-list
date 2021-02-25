@@ -31,6 +31,8 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
+    "safe-compare": "^1.1.4",
+    "static-auth": "^2.0.0",
     "tailwindcss": "^2.0.3",
     "typeface-merriweather": "0.0.72",
     "typeface-montserrat": "0.0.75"

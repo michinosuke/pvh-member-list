@@ -1,28 +1,19 @@
-import React, {useState, useEffect} from "react"
+import React, {useState} from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 export default ({ data, pathContext: { skillFieldsList }, location }) => {
   const [fieldFilter, setFieldFilter] = useState(null)
-  const [isPrivate, setIsPrivate] = useState(false)
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return false
-    if (window.location.search?.split('=')?.[1] === 'private') {
-      setIsPrivate(true)
-    }
-  }, [])
 
   const siteTitle = data.site.siteMetadata?.title || `Title`
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="All posts" />
+      <SEO title="一覧" />
       <p>{data
         .allUser
         .nodes
-        .filter(user => !user.is_private || isPrivate)
         .length}人が所属しています。</p>
       <Heading text='専門分野'/>
       <ul className='mt-4 flex-wrap'>
@@ -37,7 +28,6 @@ export default ({ data, pathContext: { skillFieldsList }, location }) => {
           .allUser
           .nodes
           .filter(user => {
-            if (user.is_private && !isPrivate) return false
             if (fieldFilter === null) return true
             if (user.skill_fields.includes(fieldFilter)) return true
             return false
@@ -49,7 +39,7 @@ export default ({ data, pathContext: { skillFieldsList }, location }) => {
                   <ul className='flex mt-1'>
                     {user.skill_fields.map(f => <li className='px-2 py-0.5 mr-1 rounded-full bg-yellow-500 text-xs text-white'>{f}</li>)}
                   </ul>
-                  <Link to={`/user/${user.id}`} className='absolute top-0 left-0 w-full h-full' state={{isPrivate}}/>
+                  <Link to={`/user/${user.id}`} className='absolute top-0 left-0 w-full h-full'/>
               </li>
             )
           }
