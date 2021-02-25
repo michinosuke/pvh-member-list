@@ -3,8 +3,7 @@ const safeCompare = require('safe-compare');
 
 const app = protect(
   '/',
-  (username, password) =>
-    safeCompare(username, process.env.USERNAME || 'admin') &&
+  (password) =>
     safeCompare(password, process.env.PASSWORD || 'secret'),
   {
     directory: `${__dirname}/public`,
