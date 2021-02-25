@@ -25,10 +25,10 @@ export default ({ data, pathContext: { skillFieldsList }, location }) => {
         .filter(user => !user.is_private || isPrivate)
         .length}人が所属しています。</p>
       <Heading text='専門分野'/>
-      <ul className='mt-4'>
+      <ul className='mt-4 flex-wrap'>
         <span onClick={() => setFieldFilter(null)} className={`px-2 py-1 mr-1 rounded-full text-xs text-white cursor-pointer ${fieldFilter ? 'bg-yellow-500' : 'bg-red-500'}`}>すべて</span>
         {skillFieldsList.map(field => (
-          <span onClick={() => setFieldFilter(field)} className={`px-2 py-1 mr-1 rounded-full text-xs text-white cursor-pointer ${fieldFilter === field ? 'bg-red-500' : 'bg-yellow-500'}`}>{field}</span>
+          <span onClick={() => setFieldFilter(field)} className={`px-2 py-1 mr-1 rounded-full text-xs text-white whitespace-nowrap cursor-pointer ${fieldFilter === field ? 'bg-red-500' : 'bg-yellow-500'}`}>{field}</span>
         ))}
       </ul>
       <Heading text='メンバー'/>

@@ -21,9 +21,9 @@ const Layout = ({ location, title, children }) => {
   }
 
   return (
-    <div className="max-w-4xl relative mx-auto min-h-screen pb-20" data-is-root-path={isRootPath}>
+    <div className="max-w-4xl relative mx-auto min-h-screen pb-20 overflow-hidden whitespace-pre-line" data-is-root-path={isRootPath}>
       <header className="py-2 bg-yellow-500 text-white text-xl text-center"><h1>{header}</h1></header>
-      <main className=''>{children}</main>
+      <main className='px-2'>{children}</main>
       <footer className="bottom-0 absolute w-full py-2 bg-yellow-500 text-white text-xs text-center">
         © {new Date().getFullYear()}, Built with
         {` `}
