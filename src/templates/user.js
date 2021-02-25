@@ -12,7 +12,7 @@ export default ({ data, location }) => {
       <SEO
         title={user.name}
       />
-      <Link to={`/${location.state.isPrivate ? '?mode=private' : ''}`}><button className='mt-5 px-3 py-1 text-sm bg-yellow-500 text-white'>←ホーム</button></Link>
+      <Link to={`/${location?.state?.isPrivate ? '?mode=private' : ''}`}><button className='mt-5 px-3 py-1 text-sm bg-yellow-500 text-white'>←ホーム</button></Link>
       <article>
         <h2 className='mt-5 text-4xl'>{user.name}</h2>
         <h3 className='mt-7 text-lg inline-block border-b-2 border-yellow-500'>基本情報</h3>

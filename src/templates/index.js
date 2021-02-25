@@ -1,11 +1,18 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 export default ({ data, pathContext: { skillFieldsList }, location }) => {
   const [fieldFilter, setFieldFilter] = useState(null)
-  const [isPrivate, _] = useState(window.location.search?.split('=')?.[1] === 'private')
+  const [isPrivate, setIsPrivate] = useState(true)
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return false
+    if (window.location.search?.split('=')?.[1] !== 'private') {
+      setIsPrivate(false)
+    }
+  }, [])
 
   const siteTitle = data.site.siteMetadata?.title || `Title`
 
