@@ -19,7 +19,7 @@ export default ({ data, location }) => {
         <p className='mt-3'>twitter: <a href={`https://twitter.com/${user.id_twitter}/`} target='_blank' className='px-3 py-1 bg-blue-500 text-white'>@{user.id_twitter}</a></p>
         <p className='mt-3'>discord: {user.id_discord.split('#')[0] + '#XXXX'}<span className='ml-3 text-gray-600 text-xs'>(プライバシー保護のためにIDは隠しています)</span></p>
         <p className='text-lg inline-block mt-7 border-b-2 border-yellow-500'>専門</p>
-        <ul className='flex mt-3'>{user.skill_fields.map(f => <li className='px-3 py-1 text-sm bg-yellow-500 text-white'>{f}</li>)}</ul>
+        <ul className='flex mt-3'>{user.skill_fields.map(f => <li className='mr-1 px-3 py-1 text-sm bg-yellow-500 text-white'>{f}</li>)}</ul>
         {user.intro_product !== '' &&
           <section className='mt-7'>
             <h3 className='text-lg inline-block border-b-2 border-yellow-500'>作ってるもの or 作りたいもの</h3>
