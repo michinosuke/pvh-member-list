@@ -44,7 +44,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allUser(sort: { fields: [createdAt], order: DESC }) {
+    allUser(sort: { fields: [createdAt], order: ASC }) {
       nodes {
         id
         discordName
