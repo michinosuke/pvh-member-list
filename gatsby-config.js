@@ -1,14 +1,13 @@
 module.exports = {
   siteMetadata: {
-    title: `VCC Members`,
+    title: `PVH Members`,
     author: {
-      name: `Vtuber Music`,
-      summary: `Vtuber Creators Community Admin`,
+      name: `Michinosuke`,
+      summary: `PVH Sub Admin`,
     },
-    description: `Vtuber Creators Communityのメンバー情報`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
+    description: `Project Virtual Historyのメンバー情報`,
     social: {
-      twitter: `vtubermusiccom`,
+      twitter: `Michin0suke`,
     },
   },
   plugins: [
