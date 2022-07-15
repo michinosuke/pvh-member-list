@@ -26,19 +26,21 @@ export default ({ data, location }) => {
             <p className="mt-3">{user.discordName}</p>
           </section>
         )}
-        {user.twitterId && (
+        {user.twitterIds && (
           <section className="mt-7">
             <h3 className="text-lg inline-block border-b-2 border-yellow-500">
               Twitter
             </h3>
-            <p className="mt-3">
-              <a
-                href={`https://twitter.com/${user.twitterId}/`}
-                target="_blank"
-                className="px-3 py-1 bg-blue-500 text-white"
-              >
-                @{user.twitterId}
-              </a>
+            <p className="mt-3 flex gap-2">
+              {user.twitterIds.map(twitterId => (
+                <a
+                  href={`https://twitter.com/${twitterId}/`}
+                  target="_blank"
+                  className="px-3 py-1 bg-blue-500 text-white"
+                >
+                  @{twitterId}
+                </a>
+              ))}
             </p>
           </section>
         )}
@@ -84,7 +86,7 @@ export const pageQuery = graphql`
       id
       discordName
       name
-      twitterId
+      twitterIds
       favorite
       others {
         key

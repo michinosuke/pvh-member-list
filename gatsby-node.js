@@ -25,7 +25,7 @@ exports.sourceNodes = async ({
     const {
       DISCORD_NAME,
       名前,
-      twitterId,
+      twitterIds,
       見ているVTuberや配信,
       DATE,
       ...others
@@ -35,7 +35,7 @@ exports.sourceNodes = async ({
       id: id.toString(),
       discordName: DISCORD_NAME,
       name: 名前,
-      twitterId,
+      twitterIds,
       favorite: 見ているVTuberや配信,
       createdAt: parse(DATE, "yyyy/MM/dd", new Date()),
       others: Object.keys(others).map(key => ({
@@ -93,7 +93,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     type User implements Node {
       discordName: String!
       name: String!
-      twitterId: String
+      twitterIds: [String]
       favorite: String
       others: [UserOption]!
       createdAt: Date @dateformat

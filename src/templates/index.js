@@ -49,7 +49,7 @@ export const pageQuery = graphql`
         id
         discordName
         name
-        twitterId
+        twitterIds
         favorite
         others {
           key
